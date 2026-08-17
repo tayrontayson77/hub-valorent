@@ -1,0 +1,5 @@
+let deferredInstall=null;
+window.addEventListener('beforeinstallprompt',event=>{event.preventDefault();deferredInstall=event;showInstallButton()});
+window.addEventListener('appinstalled',()=>{deferredInstall=null;document.querySelectorAll('[data-install-app]').forEach(b=>b.remove())});
+function showInstallButton(){if(document.querySelector('[data-install-app]'))return;const b=document.createElement('button');b.dataset.installApp='';b.textContent='📲 Installer VALOHUB';b.type='button';b.style.cssText='position:fixed;right:16px;bottom:16px;z-index:9998;padding:12px 16px;border:1px solid #8b3dff;border-radius:10px;background:linear-gradient(135deg,#ff365f,#8b3dff);color:#fff;font-weight:900;cursor:pointer;box-shadow:0 10px 35px #0009';b.onclick=async()=>{if(!deferredInstall)return;deferredInstall.prompt();await deferredInstall.userChoice;deferredInstall=null;b.remove()};document.body.appendChild(b)}
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}
