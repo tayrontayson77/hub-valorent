@@ -1,0 +1,34 @@
+name: VALOHUB sidebar scroll
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  add-sidebar-scroll:
+    if: "!contains(github.event.head_commit.message, '[valohub-sidebar]')"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add sidebar scrollbar
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('style.css')
+          css = p.read_text(encoding='utf-8')
+          marker = '/* VALOHUB SIDEBAR SCROLL */'
+          if marker not in css:
+              css += '''\n\n/* VALOHUB SIDEBAR SCROLL */\n.sidebar{overflow:hidden}\n.side-nav{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;padding-right:5px;scrollbar-width:thin;scrollbar-color:#a13dff #1a0d20}\n.side-nav::-webkit-scrollbar{width:7px}\n.side-nav::-webkit-scrollbar-track{background:#170b1d;border-radius:99px}\n.side-nav::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#ff365f,#8b3dff);border-radius:99px;box-shadow:0 0 12px #8b3dff88}\n.side-nav::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,#ff6682,#a95cff)}\n@media(max-height:760px){.sidebar{padding-top:14px;padding-bottom:14px}.brand{margin-bottom:12px}.player-card{padding:10px}.rank-card{margin-bottom:12px}.side-nav{gap:3px}.side-nav a{padding:8px}}\n'''
+              p.write_text(css, encoding='utf-8')
+          PY
+      - name: Commit sidebar scroll
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add style.css
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "feat: add VALOHUB sidebar scroll [valohub-sidebar]"
+          git push
