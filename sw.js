@@ -1,42 +1,35 @@
-const CACHE_NAME = 'valohub-pwa-v2';
-const APP_SHELL = [
-  './',
-  './index.html',
-  './manifest.webmanifest',
-  './pwa.js',
-  './icon-192.svg',
-  './icon-512.svg'
-];
+const CACHE_NAME = 'valohub-pwa-v3';
+const APP_SHELL = ['./','./index.html','./manifest.webmanifest','./pwa.js','./icon-192.svg','./icon-512.svg','./strat.html'];
 
-self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(APP_SHELL))
-      .then(() => self.skipWaiting())
-  );
-});
+const HOME = `<section id="accueil" class="hero vh-home"><div class="vh-home-main"><div class="eyebrow">VALOHUB // COMMAND CENTER</div><h1>TON HUB.<br><em>TA STRAT.</em></h1><p>Prépare tes parties, analyse les maps, choisis ton agent et retrouve toutes tes stratégies au même endroit.</p><div class="vh-actions"><a class="btn" href="./strat.html">🗺️ Créer une stratégie</a><a class="btn alt" href="#maps">▦ Explorer les maps</a><a class="btn alt" href="#agents">◈ Choisir un agent</a></div><div class="vh-status"><span>● SYSTÈME EN LIGNE</span><span>◆ VALOHUB PWA</span><span>⚡ MODE COMPÉTITIF</span></div></div><div class="vh-dashboard"><div class="vh-dash-head"><div><small>PLAYER DASHBOARD</small><h2>TAYRON</h2></div><span class="vh-online">● ONLINE</span></div><div class="vh-rank"><div class="vh-rank-icon">◆</div><div><small>RANK ACTUEL</small><strong>DIAMANT II</strong><span>178 RR • Objectif ASCENDANT</span></div></div><div class="vh-stat-grid"><div><strong>64%</strong><small>WINRATE</small></div><div><strong>1.28</strong><small>K/D</small></div><div><strong>247</strong><small>ACS</small></div><div><strong>50</strong><small>PARTIES</small></div></div><div class="vh-progress"><div><span>PROGRESSION VERS ASCENDANT</span><b>72%</b></div><i></i></div><div class="vh-next"><span>PROCHAINE ÉTAPE</span><b>Maîtriser les exécutions d'équipe</b><a href="./strat.html">Ouvrir le Strat Planner →</a></div></div><div class="vh-feature-row"><a href="./strat.html" class="vh-feature"><span>🗺️</span><div><small>STRAT PLANNER</small><b>Construis ton exécution</b><em>Agents • smokes • flèches • partage</em></div></a><a href="#maps" class="vh-feature"><span>▦</span><div><small>MAP CENTER</small><b>Analyse les cartes</b><em>Infos, zones et stratégies</em></div></a><a href="#armes" class="vh-feature"><span>⌁</span><div><small>ARSENAL</small><b>Choisis ton arme</b><em>Prix, dégâts et statistiques</em></div></a></div></section>`;
 
-self.addEventListener('activate', event => {
-  event.waitUntil(
-    caches.keys().then(keys => Promise.all(
-      keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
-    )).then(() => self.clients.claim())
-  );
-});
+const HOME_CSS = `<style id="valohub-home-plus">.vh-home{position:relative;min-height:700px;padding:82px 7% 60px!important;display:grid!important;grid-template-columns:1.15fr .85fr;gap:32px!important;align-items:center;overflow:hidden;background:radial-gradient(circle at 80% 30%,#74134f44,transparent 38%),radial-gradient(circle at 15% 80%,#5520a844,transparent 35%)}.vh-home:before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 0 48%,#ff365f08 48.2%,transparent 49%,#8b3dff08 65%,transparent 65.5%)}.vh-home-main{position:relative;z-index:2}.vh-home h1{font-size:clamp(55px,7vw,96px)!important;margin:12px 0 20px!important;text-shadow:0 0 45px #ff365f22}.vh-home p{max-width:680px!important;font-size:18px!important}.vh-actions{display:flex;gap:9px;flex-wrap:wrap;margin:25px 0}.vh-status{display:flex;gap:18px;flex-wrap:wrap;color:#8f7993;font-size:9px;letter-spacing:1.5px}.vh-status span:first-child{color:#62f2a1}.vh-dashboard{position:relative;z-index:2;padding:24px;border:1px solid #633255;border-radius:18px;background:linear-gradient(145deg,#25132fee,#100914ee);box-shadow:0 25px 80px #000a,0 0 70px #8b3dff18;backdrop-filter:blur(10px)}.vh-dash-head{display:flex;justify-content:space-between;align-items:start}.vh-dash-head small,.vh-rank small,.vh-feature small{color:#947b98;font-size:8px;letter-spacing:2px}.vh-dash-head h2{margin:3px 0;font-size:27px}.vh-online{color:#62f2a1;font-size:9px}.vh-rank{display:flex;gap:15px;align-items:center;margin:18px 0;padding:15px;border-radius:10px;background:#1b0f23;border:1px solid #432442}.vh-rank-icon{width:52px;height:52px;display:grid;place-items:center;border-radius:12px;background:linear-gradient(135deg,#ff365f,#8b3dff);font-size:24px}.vh-rank strong{display:block;font-size:24px}.vh-rank span{display:block;color:#aa93ad;font-size:11px}.vh-stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.vh-stat-grid div{padding:13px 6px;text-align:center;background:#24142b;border-radius:8px}.vh-stat-grid strong{display:block;font-size:19px}.vh-stat-grid small{font-size:7px;color:#9d86a0;letter-spacing:1px}.vh-progress{margin:18px 0}.vh-progress>div{display:flex;justify-content:space-between;font-size:8px;color:#a68fa9;margin-bottom:6px}.vh-progress b{color:#ff6685}.vh-progress i{display:block;height:6px;border-radius:99px;background:linear-gradient(90deg,#ff365f,#8b3dff);width:72%;box-shadow:0 0 15px #8b3dff55}.vh-next{padding:14px;background:#190e20;border-left:3px solid #ff365f;border-radius:7px}.vh-next span{display:block;color:#8f7993;font-size:8px;letter-spacing:1px}.vh-next b{display:block;margin:3px 0 5px}.vh-next a{color:#ff6685;font-size:11px}.vh-feature-row{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;position:relative;z-index:2}.vh-feature{display:flex;gap:14px;align-items:center;padding:18px;color:#fff;background:#160b1ddd;border:1px solid #47264d;border-radius:12px;transition:.2s}.vh-feature:hover{transform:translateY(-4px);border-color:#ff365f;box-shadow:0 15px 35px #0008}.vh-feature>span{width:46px;height:46px;display:grid;place-items:center;background:#29152f;border-radius:10px;font-size:22px}.vh-feature b{display:block;font-size:16px}.vh-feature em{display:block;color:#9f88a2;font-size:10px;font-style:normal;margin-top:2px}.vh-feature small{display:block;color:#ff6685!important;margin-bottom:3px}@media(max-width:1000px){.vh-home{grid-template-columns:1fr!important}.vh-feature-row{grid-template-columns:1fr}.vh-dashboard{max-width:700px}.vh-home{min-height:auto!important}}@media(max-width:700px){.vh-home{padding:50px 20px 40px!important}.vh-stat-grid{grid-template-columns:repeat(2,1fr)}} </style>`;
 
+function enhanceHome(html) {
+  if (!html.includes('id="valohub-home-plus"')) html = html.replace('</head>', HOME_CSS + '</head>');
+  const start = html.indexOf('<section id="accueil"');
+  if (start !== -1) {
+    const end = html.indexOf('</section>', start);
+    if (end !== -1) html = html.slice(0,start) + HOME + html.slice(end + 10);
+  }
+  return html;
+}
+
+self.addEventListener('install', event => event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(APP_SHELL)).then(() => self.skipWaiting())));
+self.addEventListener('activate', event => event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))).then(() => self.clients.claim())));
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
-
-  event.respondWith(
-    caches.match(event.request).then(cached => {
-      if (cached) return cached;
-
-      return fetch(event.request).then(response => {
-        if (!response || response.status !== 200 || response.type === 'opaque') return response;
-        const copy = response.clone();
-        caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
-        return response;
-      }).catch(() => caches.match('./index.html'));
-    })
-  );
+  const isHome = new URL(event.request.url).pathname.endsWith('/index.html') || new URL(event.request.url).pathname.endsWith('/hub-valorent/') || new URL(event.request.url).pathname.endsWith('/hub-valorent');
+  if (isHome) {
+    event.respondWith(fetch(event.request).then(async response => {
+      if (!response || !response.ok) return response;
+      const html = await response.text();
+      const enhanced = enhanceHome(html);
+      const result = new Response(enhanced, {status:response.status,statusText:response.statusText,headers:{'Content-Type':'text/html; charset=utf-8'}});
+      caches.open(CACHE_NAME).then(c => c.put('./index.html', result.clone()));
+      return result;
+    }).catch(() => caches.match('./index.html')));
+    return;
+  }
+  event.respondWith(caches.match(event.request).then(cached => cached || fetch(event.request).then(response => { if(response&&response.status===200&&response.type!=='opaque'){const copy=response.clone();caches.open(CACHE_NAME).then(c=>c.put(event.request,copy));}return response;}).catch(()=>caches.match('./index.html'))));
 });
