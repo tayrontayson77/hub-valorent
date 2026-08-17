@@ -1,1 +1,50 @@
-<!doctype html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VALOHUB — Valorant Community</title><link rel="stylesheet" href="style.css"></head><body><header><div class="logo">VALO<span>HUB</span></div><nav><a href="#accueil">Accueil</a><a href="#agents">Agents</a><a href="#maps">Maps</a><a href="#guides">Guides</a><a href="#tierlist">Tier List</a></nav><a class="button" href="https://www.twitch.tv/miianatv" target="_blank" rel="noopener noreferrer">🎥 Twitch MiianaTV</a></header><main><section id="accueil" class="hero"><div><small>THE COMMUNITY HUB</small><h1>Joue mieux.<br><em>Monte plus haut.</em></h1><p>Le hub communautaire Valorant pour découvrir les agents, apprendre les maps, progresser en ranked et suivre la méta.</p><a class="button" href="#agents">Découvrir</a> <a class="ghost" href="#tierlist">Voir la tier list →</a><br><a class="ghost" href="https://www.twitch.tv/miianatv" target="_blank" rel="noopener noreferrer">🎥 Regarder MiianaTV sur Twitch →</a></div><div class="target"><span>+</span><strong>READY?</strong><small>LOCK IN & CLIMB</small></div></section><section id="agents"><small>AGENTS</small><h2>Trouve ton main.</h2><div class="agent-tools"><input id="agentSearch" placeholder="Rechercher un agent..."><button class="filter active" data-role="ALL">Tous</button><button class="filter" data-role="DUELLISTE">Duellistes</button><button class="filter" data-role="CONTROLEUR">Contrôleurs</button><button class="filter" data-role="SENTINELLE">Sentinelles</button><button class="filter" data-role="INITIATEUR">Initiateurs</button></div><div class="cards agents"><article class="agent-card" data-name="Jett" data-role="DUELLISTE"><b>⚡ DUELLISTE</b><h3>Jett</h3><p>Entrée de site, mobilité et duels explosifs.</p><div class="tag">AGRESSIF</div></article><article class="agent-card" data-name="Omen" data-role="CONTROLEUR"><b>🧠 CONTRÔLEUR</b><h3>Omen</h3><p>Smokes, téléportation et mind games.</p><div class="tag">STRATÉGIQUE</div></article><article class="agent-card" data-name="Killjoy" data-role="SENTINELLE"><b>🛡️ SENTINELLE</b><h3>Killjoy</h3><p>Défense de zone et contrôle des flancs.</p><div class="tag">DÉFENSIF</div></article><article class="agent-card" data-name="Sova" data-role="INITIATEUR"><b>💚 INITIATEUR</b><h3>Sova</h3><p>Informations et préparation des duels.</p><div class="tag">INFO</div></article><article class="agent-card" data-name="Raze" data-role="DUELLISTE"><b>💥 DUELLISTE</b><h3>Raze</h3><p>Explosifs et pression constante.</p><div class="tag">PRESSION</div></article><article class="agent-card" data-name="Viper" data-role="CONTROLEUR"><b>☣️ CONTRÔLEUR</b><h3>Viper</h3><p>Murs et zones toxiques pour couper la carte.</p><div class="tag">ZONE</div></article></div></section><section id="maps" class="dark"><small>MAPS</small><h2>Connais le terrain.</h2><div class="mapgrid"><div><strong>ASCENT</strong><span>Mid • A Main • B Main</span></div><div><strong>HAVEN</strong><span>Trois sites • Rotations</span></div><div><strong>BIND</strong><span>Téléporteurs • Choke points</span></div><div><strong>SUNSET</strong><span>Mid control • Sites</span></div></div></section><section id="guides"><small>GUIDES</small><h2>Progresse à chaque partie.</h2><div class="cards"><article><b>01 — AIM</b><h3>Gagner ses duels</h3><p>Crosshair placement, discipline et routine d'échauffement.</p></article><article><b>02 — RANKED</b><h3>Grimper efficacement</h3><p>Communication, économie et décisions simples.</p></article><article><b>03 — TEAMPLAY</b><h3>Jouer pour l'équipe</h3><p>Trades, utilitaires et timings.</p></article></div></section><section id="tierlist" class="dark"><small>MÉTA</small><h2>Tier List</h2><div class="tiers"><div><b>S</b><span>Jett</span><span>Omen</span><span>Sova</span></div><div><b>A</b><span>Killjoy</span><span>Raze</span><span>Viper</span></div><div><b>B</b><span>Gekko</span><span>Cypher</span><span>Brimstone</span></div></div><p class="note">Tier list indicative pour la démo du site.</p></section></main><div id="agentModal" class="modal"><div class="modal-box"><button id="closeModal">×</button><h2 id="modalTitle">Agent</h2><p id="modalText"></p></div></div><footer><div class="logo">VALO<span>HUB</span></div><p>Hub communautaire Valorant • V3 • <a href="https://www.twitch.tv/miianatv" target="_blank" rel="noopener noreferrer">Twitch MiianaTV</a></p></footer><script src="script.js"></script></body></html>
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VALOHUB — Menu Valorant</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<aside class="sidebar">
+  <div class="brand"><span class="brand-mark">V</span><div><strong>VALO</strong><small>HUB</small></div></div>
+  <div class="side-label">MENU</div>
+  <nav class="side-nav">
+    <a class="active" href="#accueil">⌂ <span>Accueil</span></a>
+    <a href="#agents">◈ <span>Agents</span></a>
+    <a href="#maps">▦ <span>Maps</span></a>
+    <a href="#guides">✦ <span>Guides</span></a>
+    <a href="#tierlist">◆ <span>Tier List</span></a>
+  </nav>
+  <div class="side-label">COMMUNAUTÉ</div>
+  <a class="twitch-card" href="https://www.twitch.tv/miianatv" target="_blank" rel="noopener noreferrer"><span class="live-dot"></span><div><b>MiianaTV</b><small>Voir le live Twitch</small></div><strong>↗</strong></a>
+  <div class="sidebar-footer">VALOHUB <span>V3</span></div>
+</aside>
+
+<main class="app">
+<header class="topbar"><div><span class="status-dot"></span> VALORANT COMMUNITY HUB</div><a class="top-twitch" href="https://www.twitch.tv/miianatv" target="_blank" rel="noopener noreferrer">🎥 Twitch MiianaTV</a></header>
+
+<section id="accueil" class="dashboard">
+  <div class="welcome"><small>BIENVENUE SUR VALOHUB</small><h1>Joue mieux.<br><em>Monte plus haut.</em></h1><p>Un menu communautaire Valorant pour retrouver rapidement tes agents, maps, guides et la méta.</p><div class="actions"><a class="button" href="#agents">Ouvrir les agents</a><a class="ghost" href="https://www.twitch.tv/miianatv" target="_blank" rel="noopener noreferrer">Regarder MiianaTV →</a></div></div>
+  <div class="profile-panel"><div class="profile-top"><span class="avatar">T</span><div><small>PLAYER</small><h3>VALOHUB</h3></div><span class="online">ONLINE</span></div><div class="profile-stats"><div><b>6</b><small>Agents</small></div><div><b>4</b><small>Maps</small></div><div><b>S</b><small>Tier</small></div></div><div class="rank-line"><span>RANKED</span><strong>CLIMB MODE</strong></div></div>
+</section>
+
+<section id="agents"><div class="section-head"><div><small>01 / AGENTS</small><h2>Choisis ton main.</h2></div><span class="counter">6 AGENTS</span></div><div class="agent-tools"><input id="agentSearch" placeholder="Rechercher un agent..."><button class="filter active" data-role="ALL">Tous</button><button class="filter" data-role="DUELLISTE">Duellistes</button><button class="filter" data-role="CONTROLEUR">Contrôleurs</button><button class="filter" data-role="SENTINELLE">Sentinelles</button><button class="filter" data-role="INITIATEUR">Initiateurs</button></div><div class="cards agents">
+<article class="agent-card" data-name="Jett" data-role="DUELLISTE"><b>DUELLISTE</b><h3>Jett</h3><p>Mobilité et prises de duel explosives.</p><div class="tag">AGRESSIF</div></article>
+<article class="agent-card" data-name="Omen" data-role="CONTROLEUR"><b>CONTRÔLEUR</b><h3>Omen</h3><p>Smokes créatives et mind games.</p><div class="tag">STRATÉGIQUE</div></article>
+<article class="agent-card" data-name="Killjoy" data-role="SENTINELLE"><b>SENTINELLE</b><h3>Killjoy</h3><p>Défense de zone et contrôle des flancs.</p><div class="tag">DÉFENSIF</div></article>
+<article class="agent-card" data-name="Sova" data-role="INITIATEUR"><b>INITIATEUR</b><h3>Sova</h3><p>Informations pour préparer les engagements.</p><div class="tag">INFO</div></article>
+<article class="agent-card" data-name="Raze" data-role="DUELLISTE"><b>DUELLISTE</b><h3>Raze</h3><p>Explosifs et pression constante.</p><div class="tag">PRESSION</div></article>
+<article class="agent-card" data-name="Viper" data-role="CONTROLEUR"><b>CONTRÔLEUR</b><h3>Viper</h3><p>Murs et zones toxiques pour couper la carte.</p><div class="tag">ZONE</div></article>
+</div></section>
+
+<section id="maps" class="dark"><div class="section-head"><div><small>02 / MAPS</small><h2>Connais le terrain.</h2></div></div><div class="mapgrid"><div><strong>ASCENT</strong><span>Mid • A Main • B Main</span></div><div><strong>HAVEN</strong><span>Trois sites • Rotations</span></div><div><strong>BIND</strong><span>Téléporteurs • Choke points</span></div><div><strong>SUNSET</strong><span>Mid control • Sites</span></div></div></section>
+
+<section id="guides"><div class="section-head"><div><small>03 / GUIDES</small><h2>Progresse à chaque partie.</h2></div></div><div class="cards"><article><b>01 — AIM</b><h3>Gagner ses duels</h3><p>Crosshair placement, discipline et routine d'échauffement.</p></article><article><b>02 — RANKED</b><h3>Grimper efficacement</h3><p>Communication, économie et décisions simples.</p></article><article><b>03 — TEAMPLAY</b><h3>Jouer pour l'équipe</h3><p>Trades, utilitaires et timings.</p></article></div></section>
+
+<section id="tierlist" class="dark"><div class="section-head"><div><small>04 / MÉTA</small><h2>Tier List</h2></div></div><div class="tiers"><div><b>S</b><span>Jett</span><span>Omen</span><span>Sova</span></div><div><b>A</b><span>Killjoy</span><span>Raze</span><span>Viper</span></div><div><b>B</b><span>Gekko</span><span>Cypher</span><span>Brimstone</span></div></div><p class="note">Tier list indicative pour le hub.</p></section>
+
+<footer><div class="logo">VALO<span>HUB</span></div><p>Hub communautaire Valorant • <a href="https://www.twitch.tv/miianatv" target="_blank" rel="noopener noreferrer">Twitch MiianaTV</a></p></footer>
+</main>
+<div id="agentModal" class="modal"><div class="modal-box"><button id="closeModal">×</button><h2 id="modalTitle">Agent</h2><p id="modalText"></p></div></div>
+<script src="script.js"></script>
+</body></html>
