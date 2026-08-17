@@ -24,11 +24,23 @@ jobs:
               css += '''\n\n/* VALOHUB SIDEBAR SCROLL */\n.sidebar{overflow:hidden}\n.side-nav{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;padding-right:5px;scrollbar-width:thin;scrollbar-color:#a13dff #1a0d20}\n.side-nav::-webkit-scrollbar{width:7px}\n.side-nav::-webkit-scrollbar-track{background:#170b1d;border-radius:99px}\n.side-nav::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#ff365f,#8b3dff);border-radius:99px;box-shadow:0 0 12px #8b3dff88}\n.side-nav::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,#ff6682,#a95cff)}\n@media(max-height:760px){.sidebar{padding-top:14px;padding-bottom:14px}.brand{margin-bottom:12px}.player-card{padding:10px}.rank-card{margin-bottom:12px}.side-nav{gap:3px}.side-nav a{padding:8px}}\n'''
               p.write_text(css, encoding='utf-8')
           PY
-      - name: Commit sidebar scroll
+      - name: Add PWA support to the HTML
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          html = p.read_text(encoding='utf-8')
+          marker = '<!-- VALOHUB PWA -->'
+          if marker not in html:
+              html = html.replace('</head>', '<link rel="manifest" href="./manifest.webmanifest"><meta name="theme-color" content="#8b3dff"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="icon" href="./icon-192.svg"><!-- VALOHUB PWA --></head>', 1)
+              html = html.replace('</body>', '<script src="./pwa.js" defer></script><!-- VALOHUB PWA --></body>', 1)
+              p.write_text(html, encoding='utf-8')
+          PY
+      - name: Commit changes
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add style.css
+          git add style.css index.html
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m "feat: add VALOHUB sidebar scroll [valohub-sidebar]"
+          git commit -m "feat: enable VALOHUB installation [valohub-sidebar]"
           git push
